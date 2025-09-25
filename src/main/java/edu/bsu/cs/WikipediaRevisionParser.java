@@ -13,17 +13,18 @@ public class WikipediaRevisionParser {
 
     //gives Array of the time of edits from a wiki article
     public String parseFull (InputStream testDataStream) throws IOException {
-        JSONArray full = (JSONArray) JsonPath.read(testDataStream, "$..timestamp,user");
-        System.out.println(full.get(0).toString());
-        System.out.println(full.get(1).toString());
-        System.out.println(full.get(2).toString());
-        System.out.println(full.get(3).toString());
-        return full.getFirst().toString();
+        JSONArray time = (JSONArray) JsonPath.read(testDataStream, "$..timestamp");
+        JSONArray users = (JSONArray) JsonPath.read(testDataStream, "$..user");
+
+        System.out.println(time.get(0).toString() + "  " + users.get(0).toString());
+
+        return "Done";
     }
 
     public String parseTime(InputStream testDataStream) throws IOException {
 
         JSONArray time = (JSONArray) JsonPath.read(testDataStream, "$..timestamp");
+
         System.out.println(time.get(0).toString());
         System.out.println(time.get(1).toString());
         System.out.println(time.get(2).toString());
@@ -33,7 +34,9 @@ public class WikipediaRevisionParser {
 
     //gives Array of Users who have edited the wiki aritcle
     public String parseUser(InputStream testDataStream) throws IOException{
+
         JSONArray user = (JSONArray) JsonPath.read(testDataStream, "$..user");
+
         System.out.println(user.get(0).toString());
         System.out.println(user.get(1).toString());
         System.out.println(user.get(2).toString());

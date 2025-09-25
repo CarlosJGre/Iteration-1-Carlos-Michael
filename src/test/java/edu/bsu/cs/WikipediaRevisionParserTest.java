@@ -24,4 +24,13 @@ public class WikipediaRevisionParserTest {
         String user = parser.parseUser(testDataStream);
         Assertions.assertEquals("Notreallydavid", user);
     }
+
+    @Test
+    public void fullParse() throws IOException {
+        WikipediaRevisionParser parser = new WikipediaRevisionParser();
+        InputStream testDataStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("test.json");
+        String parseFull = parser.parseFull(testDataStream);
+    }
+
+
 }
