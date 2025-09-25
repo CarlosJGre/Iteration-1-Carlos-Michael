@@ -30,7 +30,7 @@ public class WikiSearch {
     }
 
     private String getLatestRevisionOf(String articleTitle) throws IOException {
-        String urlString = String.format("https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles=Soup&rvprop=timestamp&rvlimit=1");
+        String urlString = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles=" + articleTitle + "&rvprop=timestamp&rvlimit=1";
         String encodedUrlString = URLEncoder.encode(urlString, Charset.defaultCharset());
         try {
             URL url = new URL(encodedUrlString);
